@@ -1,0 +1,10 @@
+<h1>Buddy Circles Page</h1>
+
+<% @buddy_circles.each do |circle| %>
+	<%= circle.name %>:
+	<%= circle.member_ids %>
+	<%= link_to "View this Buddy Circle", buddy_circle_url(circle) %>
+	<br>
+<% end %>
+<br>
+<%= link_to "Create a new Buddy Circle", new_buddy_circle_url %>
