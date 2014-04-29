@@ -10,13 +10,15 @@ class BuddyCircle < ActiveRecord::Base
   has_many(
     :members,
     through: :memberships,
-    source: :user)
+    source: :user
+  )
 
   has_many(
     :shares,
     class_name: "PostShare",
     foreign_key: :buddy_circle_id,
-    primary_key: :id)
+    primary_key: :id
+  )
 
   has_many(
     :posts,

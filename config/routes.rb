@@ -4,6 +4,15 @@ FriendCircle::Application.routes.draw do
   resources :buddy_circles
   resources :users
 
-  resources :posts
+  resources :posts do
+    collection do
+      # /posts/feed
+      resources :feed
+    end
+  end
+
+  # resource :feed, only: [:show]
+  # /feed
+
   resources :links
 end

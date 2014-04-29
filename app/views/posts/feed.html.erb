@@ -1,0 +1,8 @@
+<h1>Feed</h1>
+
+<% @posts.each do |post| %>
+	<% if post.is_shared_post?  %>
+		<%= post %>
+		<br>
+	<% end %>
+<% end %>

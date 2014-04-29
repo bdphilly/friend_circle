@@ -4,6 +4,7 @@ class BuddyCirclesController < ApplicationController
   end
 
   def new
+    # @buddy_circle = BuddyCircle.new
   end
 
   def create
@@ -21,9 +22,25 @@ class BuddyCirclesController < ApplicationController
     @buddy_circle = BuddyCircle.find(params[:id])
   end
 
+  def edit
+    @buddy_circle = BuddyCircle.find(params[:id])
+  end
+
+  def update
+    @buddy_circle = BuddyCircle.find(params[:id])
+
+    if @buddy_circle
+      @buddy_circle.update_attributes(buddy_circle_params)
+      redirect_to buddy_circle_url(@buddy_circle)
+    else
+      flash.now[:errors] = @buddy_circle.errors.full_messages
+      render :edit
+    end
+  end
+
   private
   def buddy_circle_params
-    params.require(:buddy_circle).permit(:name, :owner_id, :member_ids => [])
+    params.require(:buddy_circle).permit(:name, :member_ids => [])
   end
 
 end

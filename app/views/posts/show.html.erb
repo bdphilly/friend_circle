@@ -1,0 +1,10 @@
+<h1>The Post</h1>
+
+<h3><%= @post.body %></h3>
+	<br>
+<% @post.links.each do |link| %>
+	Link: <%= link.url %>
+	<br><br>
+<% end %>
+
+

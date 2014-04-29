@@ -1,0 +1,20 @@
+<h1>Make Posts</h1>
+
+<form action="<%= posts_url %>" method="POST">
+	<input type="hidden" name="authenticity_token" value="<%=
+			form_authenticity_token %>">
+	<label>Your Post<br>
+	<input type="text" name="post[body]" value="<%= @post.body %>"</label>
+	<br>
+	<br>
+
+	<% 3.times do |i| %>
+		<label>
+			Link <%= i + 1 %>
+			<input type="text" name="links[<%= i %>][url]">
+			<br>
+		</label>
+	<% end %>
+
+	<input type="submit" value="Make Post">
+</form>

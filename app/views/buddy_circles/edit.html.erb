@@ -1,0 +1,25 @@
+<h1>Edit Friend Circle</h1>
+
+<form action="<%= buddy_circle_url(@buddy_circle) %>" method="POST">
+	<input type="hidden" name="_method" value="PATCH">
+	<input type="hidden" name="authenticity_token" value="<%= 			form_authenticity_token %>">
+	<label>Name<br>
+	<input type="text" name="buddy_circle[name]" value="<%= @buddy_circle.name %>"></label>
+
+	<input type="hidden" name="buddy_circle[members][]" value=""><br><br>
+	Members to add
+	<br>
+	<% User.all.each do |user| %>
+		<label>
+			<input type="checkbox" name="buddy_circle[member_ids][]"
+				value="<%= user.id %>"
+				<%= "checked" if @buddy_circle.member_ids.include?(user.id) %>>
+
+			<%= user.email %> <%= user.id %>
+		</label>
+		<br>
+	<% end %>
+  <br>
+
+	<input type="submit" value="Update Circle">
+</form>
