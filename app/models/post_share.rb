@@ -15,10 +15,16 @@ class PostShare < ActiveRecord::Base
   )
 # It should display the items shared with the current user (posts with bodies and associated links, along with the author of that post)
 
-  def is_shared_post?
-    buddy_circle.members.include?(current_user.id)
+  def is_shared_post?(user)
+    buddy_circle.members.include?(user.id)
   end
 
 
 
 end
+
+# Post
+# PostShare
+# Circles
+# CircleMemberships
+# filter out only circle memberships we're in.
